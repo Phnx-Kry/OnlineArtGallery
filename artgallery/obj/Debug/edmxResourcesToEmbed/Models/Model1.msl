@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OnlineArtGalleryModelStoreContainer" CdmEntityContainer="OnlineArtGalleryEntities">
+    <EntitySetMapping Name="Adminboxes">
+      <EntityTypeMapping TypeName="OnlineArtGalleryModel.Adminbox">
+        <MappingFragment StoreEntitySet="Adminbox">
+          <ScalarProperty Name="adminId" ColumnName="adminId" />
+          <ScalarProperty Name="adminFirstName" ColumnName="adminFirstName" />
+          <ScalarProperty Name="adminLastName" ColumnName="adminLastName" />
+          <ScalarProperty Name="adminPassword" ColumnName="adminPassword" />
+          <ScalarProperty Name="adminDOB" ColumnName="adminDOB" />
+          <ScalarProperty Name="adminAddress" ColumnName="adminAddress" />
+          <ScalarProperty Name="adminCity" ColumnName="adminCity" />
+          <ScalarProperty Name="adminZip" ColumnName="adminZip" />
+          <ScalarProperty Name="adminState" ColumnName="adminState" />
+          <ScalarProperty Name="adminCountry" ColumnName="adminCountry" />
+          <ScalarProperty Name="adminCellPhone" ColumnName="adminCellPhone" />
+          <ScalarProperty Name="adminEmail" ColumnName="adminEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArtGalleries">
+      <EntityTypeMapping TypeName="OnlineArtGalleryModel.ArtGallery">
+        <MappingFragment StoreEntitySet="ArtGallery">
+          <ScalarProperty Name="ArtPic" ColumnName="ArtPic" />
+          <ScalarProperty Name="ArtId" ColumnName="ArtId" />
+          <ScalarProperty Name="ArtTitle" ColumnName="ArtTitle" />
+          <ScalarProperty Name="ArtDescription" ColumnName="ArtDescription" />
+          <ScalarProperty Name="ArtPrice" ColumnName="ArtPrice" />
+          <ScalarProperty Name="ArtCategory" ColumnName="ArtCategory" />
+          <ScalarProperty Name="IsSold" ColumnName="IsSold" />
+          <ScalarProperty Name="approvalDate" ColumnName="approvalDate" />
+          <ScalarProperty Name="artistId_FK" ColumnName="artistId_FK" />
+          <ScalarProperty Name="approvedbyadminid_FK" ColumnName="approvedbyadminid_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArtInvoices">
+      <EntityTypeMapping TypeName="OnlineArtGalleryModel.ArtInvoice">
+        <MappingFragment StoreEntitySet="ArtInvoice">
+          <ScalarProperty Name="ArtinvoiceId" ColumnName="ArtinvoiceId" />
+          <ScalarProperty Name="datesold" ColumnName="datesold" />
+          <ScalarProperty Name="customerid_FK" ColumnName="customerid_FK" />
+          <ScalarProperty Name="artid_FK" ColumnName="artid_FK" />
+          <ScalarProperty Name="paymentmode" ColumnName="paymentmode" />
+          <ScalarProperty Name="approvedbyadminid_FK" ColumnName="approvedbyadminid_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuctionGalleries">
+      <EntityTypeMapping TypeName="OnlineArtGalleryModel.AuctionGallery">
+        <MappingFragment StoreEntitySet="AuctionGallery">
+          <ScalarProperty Name="AucPic" ColumnName="AucPic" />
+          <ScalarProperty Name="AucId" ColumnName="AucId" />
+          <ScalarProperty Name="AucTitle" ColumnName="AucTitle" />
+          <ScalarProperty Name="AucDescription" ColumnName="AucDescription" />
+          <ScalarProperty Name="AucCategory" ColumnName="AucCategory" />
+          <ScalarProperty Name="Currentbid" ColumnName="Currentbid" />
+          <ScalarProperty Name="IsSold" ColumnName="IsSold" />
+          <ScalarProperty Name="DateUploaded" ColumnName="DateUploaded" />
+          <ScalarProperty Name="EndingDate" ColumnName="EndingDate" />
+          <ScalarProperty Name="ArtistId_FK" ColumnName="ArtistId_FK" />
+          <ScalarProperty Name="Approvedbyadminid_FK" ColumnName="Approvedbyadminid_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuctionInvoices">
+      <EntityTypeMapping TypeName="OnlineArtGalleryModel.AuctionInvoice">
+        <MappingFragment StoreEntitySet="AuctionInvoice">
+          <ScalarProperty Name="AucInvoiceId" ColumnName="AucInvoiceId" />
+          <ScalarProperty Name="datesold" ColumnName="datesold" />
+          <ScalarProperty Name="customerid_FK" ColumnName="customerid_FK" />
+          <ScalarProperty Name="artid_FK" ColumnName="artid_FK" />
+          <ScalarProperty Name="paymentmode" ColumnName="paymentmode" />
+          <ScalarProperty Name="approvedbyadminid_FK" ColumnName="approvedbyadminid_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="OnlineArtGalleryModel.Member">
+        <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
+          <ScalarProperty Name="memberFirstName" ColumnName="memberFirstName" />
+          <ScalarProperty Name="memberLastName" ColumnName="memberLastName" />
+          <ScalarProperty Name="memberPassword" ColumnName="memberPassword" />
+          <ScalarProperty Name="memberDOB" ColumnName="memberDOB" />
+          <ScalarProperty Name="memberAddress" ColumnName="memberAddress" />
+          <ScalarProperty Name="memberCity" ColumnName="memberCity" />
+          <ScalarProperty Name="memberZip" ColumnName="memberZip" />
+          <ScalarProperty Name="memberState" ColumnName="memberState" />
+          <ScalarProperty Name="memberCountry" ColumnName="memberCountry" />
+          <ScalarProperty Name="memberCellPhone" ColumnName="memberCellPhone" />
+          <ScalarProperty Name="memberEmail" ColumnName="memberEmail" />
+          <ScalarProperty Name="dateofjoining" ColumnName="dateofjoining" />
+          <ScalarProperty Name="memberapprovedbyadminid_fk" ColumnName="memberapprovedbyadminid_fk" />
+          <ScalarProperty Name="memberSoldProducts" ColumnName="memberSoldProducts" />
+          <ScalarProperty Name="memberBuyedProducts" ColumnName="memberBuyedProducts" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

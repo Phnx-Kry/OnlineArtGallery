@@ -1,0 +1,124 @@
+﻿@model IEnumerable<artgallery.Models.Member>
+
+@{
+    ViewBag.Title = "MembersList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MembersList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.memberFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memberLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memberPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memberDOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memberAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memberCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memberZip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memberState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memberCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memberCellPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memberEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateofjoining)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memberSoldProducts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memberBuyedProducts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memberAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adminbox.adminFirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberDOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberZip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberCountry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberCellPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateofjoining)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberSoldProducts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberBuyedProducts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memberAge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adminbox.adminFirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.memberId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.memberId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.memberId })
+        </td>
+    </tr>
+}
+
+</table>

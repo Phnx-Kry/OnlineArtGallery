@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@ViewBag.Title - Online Art Gallery</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- **CSS - stylesheets** -->
+    <link id="default-css" rel="stylesheet" href="~/Content/style.css" type="text/css" media="all" />
+    @Styles.Render("~/Content/css")
+   
+
+    @*<link rel="icon" href="" type="image/x-icon">*@
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon" />
+
+    @*<link rel="icon" href="favicon.ico" type="image/x-icon" />*@
+
+    <!-- **Additional - stylesheets** -->
+    <!--<link href="~/Content/css/animations.css" rel="stylesheet" type="text/css" media="all" />
+    <link id="shortcodes-css" href="~/Content/css/shortcodes.css" rel="stylesheet" type="text/css" media="all" />
+    <link id="skin-css" href="~/Content/skins/red/style.css" rel="stylesheet" media="all" />
+    <link href="~/Content/css/isotope.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/css/prettyPhoto.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/pace.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/Content/css/responsive.css" type="text/css" media="all" />
+
+    <link id="light-dark-css" href="~/Content/dark/dark.css" rel="stylesheet" media="all" />-->
+
+    <!-- **Font Awesome** -->
+    <!--<link rel="stylesheet" href="~/Content/css/font-awesome.min.css" type="text/css" />-->
+
+    <!-- Modernizr -->
+    <!--<script src="~/Content/js/modernizr.js"></script>-->
+
+
+
+</head>
+<body>
+
+
+    <!-- **header-wrapper Starts** -->
+    <div id="header" class="header">
+        <div class="container menu-container">
+
+            <h2>  @Html.ActionLink("Online Art Gallery", "index", "Home", new { @class = "logo" }) </h2>
+
+            <a href="#" class="menu-trigger">
+                <span></span>
+            </a>
+        </div>
+    </div>
+
+    <nav id="main-menu">
+        <!-- Main-menu Starts -->
+        <div id="dt-menu-toggle" class="dt-menu-toggle">
+            Menu
+            <span class="dt-menu-toggle-icon"></span>
+        </div>
+        <ul class="menu type1">
+            <!-- Menu Starts -->
+            
+            <li class="menu-item-simple-parent">
+
+                @Html.ActionLink("Home", "index", "Home")
+                <ul class="sub-menu">
+                    <li>@Html.ActionLink("About", "about", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Account", "Account", "Customer")</li>
+                </ul>
+                <a class="dt-menu-expand">+</a>
+            </li>
+            
+            <li class="menu-item-simple-parent">
+                @Html.ActionLink("new art", "Gallery", "Home")
+                <ul class="sub-menu">
+                    <li><a href="gallery-detail.html">Gallery detail</a></li>
+                    <li><a href="gallery-detail-with-lhs.html">Gallery-detail-left-sidebar</a></li>
+                    <li><a href="gallery-detail-with-rhs.html">Gallery-detail-right-sidebar</a></li>
+                </ul>
+                <a class="dt-menu-expand">+</a>
+            </li>
+            <li class="menu-item-simple-parent">
+                @Html.ActionLink("art and sale", "shop", "Home")
+                <ul class="sub-menu">
+                    <li><a href="shop-detail.html">Shop Detail</a></li>
+                    <li><a href="shop-cart.html">Cart Page</a></li>
+                    <li><a href="shop-checkout.html">Checkout Page</a></li>
+                </ul>
+                <a class="dt-menu-expand">+</a>
+            </li>
+            <li class="menu-item-simple-parent">
+                @Html.ActionLink("Admin/customer(login)", "Blog", "Home")
+                <ul class="sub-menu">
+                    <li><a href="blog-detail.html">Blog detail</a></li>
+                    <li><a href="blog-detail-with-lhs.html">Blog-detail-left-sidebar</a></li>
+                    <li><a href="blog-detail-with-rhs.html">Blog-detail-right-sidebar</a></li>
+                </ul>
+                <a class="dt-menu-expand">+</a>
+            </li>
+            <li class="menu-item-simple-parent">
+
+                @Html.ActionLink("Member Account", "Account", "Customer")
+                <ul class="sub-menu">
+                    <li>@Html.ActionLink("Login", "MemberLogin", "Customer")</li>
+                    <li>@Html.ActionLink("SignUp", "Register", "Customer")</li>
+                    <li>@Html.ActionLink("Account", "Account", "Customer")</li>
+                </ul>
+                <a class="dt-menu-expand">+</a>
+            </li>
+
+            
+
+        </ul> <!-- Menu Ends -->
+    </nav><!-- Main-menu Ends -->
+
+
+    <div class="container body-content">
+        <div class="slider-container">
+
+            <div class="slider fullwidth-section parallax"></div>
+        </div>
+        @RenderBody()
+    </div>
+
+    <footer id="footer" class="animate" data-animation="fadeIn" data-delay="100">
+        <div class="container">
+            <div class="copyright">
+
+                <ul class="footer-links">
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Terms of use</a></li>
+                    <li><a href="#">Faq</a></li>
+                </ul>
+
+                <ul class="payment-options">
+                    <li><a href="#" class="fa fa-cc-amex"></a></li>
+                    <li><a href="#" class="fa fa-cc-mastercard"></a></li>
+                    <li><a href="#" class="fa fa-cc-visa"></a></li>
+                    <li><a href="#" class="fa fa-cc-discover"></a></li>
+                    <li><a href="#" class="fa fa-cc-paypal"></a></li>
+                </ul>
+
+                <p>© 2020 <a href="#">ONLINE ART GALLERY</a>.DEVELOPED BY <a href="#">HAMNA ,ABDULLAH ,ALIYA .</a> </p>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main Ends Here-->
+    <!-- **inner-wrapper - End** -->
+
+@*
+    <script src="~/Content/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+
+    <script src="~/Content/js/jquery.inview.js" type="text/javascript"></script>
+    <script src="~/Content/js/jquery.viewport.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="~/Content/js/jquery.isotope.min.js"></script>
+
+    <script src="~/Content/js/jsplugins.js" type="text/javascript"></script>
+
+    <script src="~/Content/js/jquery.prettyPhoto.js" type="text/javascript"></script>
+
+    <script src="~/Content/js/jquery.validate.min.js" type="text/javascript"></script>
+
+    <script src="~/Content/js/jquery.tipTip.minified.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="~/Content/js/jquery.bxslider.min.js"></script>
+
+    <script src="~/Content/js/controlpanel.js" type="text/javascript"></script>
+
+    <script src="~/Content/js/custom.js"></script>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
