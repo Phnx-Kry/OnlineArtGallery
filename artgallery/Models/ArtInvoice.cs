@@ -23,6 +23,6 @@ namespace artgallery.Models
     
         public virtual Adminbox Adminbox { get; set; }
         public virtual ArtGallery ArtGallery { get; set; }
-        public virtual Member Member { get; set; }
+        public virtual Member Member1 { get; set; }
     }
 }

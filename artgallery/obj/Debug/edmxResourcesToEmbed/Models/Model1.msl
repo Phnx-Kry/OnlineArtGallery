@@ -78,23 +78,23 @@
     </EntitySetMapping>
     <EntitySetMapping Name="Members">
       <EntityTypeMapping TypeName="OnlineArtGalleryModel.Member">
-        <MappingFragment StoreEntitySet="Members">
-          <ScalarProperty Name="memberId" ColumnName="memberId" />
-          <ScalarProperty Name="memberFirstName" ColumnName="memberFirstName" />
-          <ScalarProperty Name="memberLastName" ColumnName="memberLastName" />
-          <ScalarProperty Name="memberPassword" ColumnName="memberPassword" />
-          <ScalarProperty Name="memberDOB" ColumnName="memberDOB" />
-          <ScalarProperty Name="memberAddress" ColumnName="memberAddress" />
-          <ScalarProperty Name="memberCity" ColumnName="memberCity" />
-          <ScalarProperty Name="memberZip" ColumnName="memberZip" />
-          <ScalarProperty Name="memberState" ColumnName="memberState" />
-          <ScalarProperty Name="memberCountry" ColumnName="memberCountry" />
-          <ScalarProperty Name="memberCellPhone" ColumnName="memberCellPhone" />
-          <ScalarProperty Name="memberEmail" ColumnName="memberEmail" />
-          <ScalarProperty Name="dateofjoining" ColumnName="dateofjoining" />
-          <ScalarProperty Name="memberapprovedbyadminid_fk" ColumnName="memberapprovedbyadminid_fk" />
-          <ScalarProperty Name="memberSoldProducts" ColumnName="memberSoldProducts" />
+        <MappingFragment StoreEntitySet="Member">
           <ScalarProperty Name="memberBuyedProducts" ColumnName="memberBuyedProducts" />
+          <ScalarProperty Name="memberSoldProducts" ColumnName="memberSoldProducts" />
+          <ScalarProperty Name="memberapprovedbyadminid_fk" ColumnName="memberapprovedbyadminid_fk" />
+          <ScalarProperty Name="dateofjoining" ColumnName="dateofjoining" />
+          <ScalarProperty Name="memberEmail" ColumnName="memberEmail" />
+          <ScalarProperty Name="memberCellPhone" ColumnName="memberCellPhone" />
+          <ScalarProperty Name="memberCountry" ColumnName="memberCountry" />
+          <ScalarProperty Name="memberState" ColumnName="memberState" />
+          <ScalarProperty Name="memberZip" ColumnName="memberZip" />
+          <ScalarProperty Name="memberCity" ColumnName="memberCity" />
+          <ScalarProperty Name="memberAddress" ColumnName="memberAddress" />
+          <ScalarProperty Name="memberDOB" ColumnName="memberDOB" />
+          <ScalarProperty Name="memberPassword" ColumnName="memberPassword" />
+          <ScalarProperty Name="memberLastName" ColumnName="memberLastName" />
+          <ScalarProperty Name="memberFirstName" ColumnName="memberFirstName" />
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

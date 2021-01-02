@@ -20,38 +20,7 @@ namespace artgallery.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult MemberLogin() // login authenticatin 2
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult MemberLogin(Member m) // login authenticatin 2
-        {
-
-            var membes = db.Members.Where(x => x.memberEmail == m.memberEmail && x.memberPassword == m.memberPassword).FirstOrDefault();
-
-
-            if (membes != null)
-            {
-                FormsAuthentication.SetAuthCookie(m.memberEmail, false);
-                var profileData = new Member
-                {
-                    memberId = m.memberId,
-                    memberFirstName = m.memberFirstName
-                };
-
-                this.Session["UserProfile"] = profileData;
-                return RedirectToAction("Account");
-                }
-            else
-            {
-                ViewBag.error = "Invalid Username or id";
-            }
-            
-            return View();
-        }
+       
 
         public ActionResult Register() // create page
         {
@@ -62,19 +31,19 @@ namespace artgallery.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(Member memberd)
+        public ActionResult Register(Member memberadd)
         {
 
             if (ModelState.IsValid)
             {
-                db.Members.Add(memberd);
+                db.Members.Add(memberadd);
 
                 
 
-                if (db.SaveChanges() > 0)
+                if (db.SaveChanges()>0)
                 {
-                    TempData["msg"] = "Data Inserted";
-                    return RedirectToAction("Account");
+                    TempData["msg"] = "Account Created \n SignIn to Continue";
+                    return RedirectToAction("MemberLogin");
                 }
                 else
                 {
@@ -88,15 +57,56 @@ namespace artgallery.Controllers
 
             
         }
-        [Authorize]
-        public ActionResult Account()  // profile ViewRead Page
+
+        [HttpGet]
+        public ActionResult MemberLogin() // login authenticatin 2
         {
-            var profileData = this.Session["UserProfile"] as Member;
-            
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult MemberLogin(Member m) // login authenticatin 2
+        {
+
+            Member membes = db.Members.Where(x => x.memberEmail == m.memberEmail && x.memberPassword == m.memberPassword).FirstOrDefault();
+
+
+            if (membes != null)
+            {
+                FormsAuthentication.SetAuthCookie(m.memberEmail, false);
+                var profileData = new Member
+                {
+                    memberId = m.memberId,
+                    memberFirstName = m.memberFirstName
+                };
+
+                this.Session["UserProfile"] = profileData;
+                return RedirectToAction("Account");
+            }
+            else
+            {
+                ViewBag.error = "Invalid Username or id";
+            }
 
             return View();
         }
 
-        
+
+        [Authorize]
+        public ActionResult Account()  // profile ViewRead Page
+        {
+
+
+
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+            Session.Abandon();
+
+            return View("MemberLogin");
+        }
     }
 }

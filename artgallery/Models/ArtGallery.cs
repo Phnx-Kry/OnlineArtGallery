@@ -32,8 +32,8 @@ namespace artgallery.Models
         public string ArtPic { get; set; }
     
         public virtual Adminbox Adminbox { get; set; }
-        public virtual Member Member { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArtInvoice> ArtInvoices { get; set; }
+        public virtual Member Member1 { get; set; }
     }
 }

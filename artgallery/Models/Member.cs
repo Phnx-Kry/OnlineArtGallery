@@ -11,8 +11,7 @@ namespace artgallery.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Member
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,30 +24,17 @@ namespace artgallery.Models
         }
     
         public int memberId { get; set; }
-        [Required]
         public string memberFirstName { get; set; }
-        [Required]
         public string memberLastName { get; set; }
-        [Required]
-        [DataType(DataType.Password)]
         public string memberPassword { get; set; }
-        [Required]
         public string memberDOB { get; set; }
-        [Required]
         public string memberAddress { get; set; }
-        [Required]
         public string memberCity { get; set; }
-        [Required]
         public string memberZip { get; set; }
-        [Required]
         public string memberState { get; set; }
-        [Required]
         public string memberCountry { get; set; }
-        [Required]
         public string memberCellPhone { get; set; }
-        [Required]
         public string memberEmail { get; set; }
-
         public string dateofjoining { get; set; }
         public Nullable<int> memberapprovedbyadminid_fk { get; set; }
         public Nullable<int> memberSoldProducts { get; set; }

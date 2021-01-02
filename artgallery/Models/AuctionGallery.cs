@@ -11,8 +11,7 @@ namespace artgallery.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class AuctionGallery
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -31,13 +30,11 @@ namespace artgallery.Models
         public string EndingDate { get; set; }
         public Nullable<int> ArtistId_FK { get; set; }
         public Nullable<int> Approvedbyadminid_FK { get; set; }
-        [Required]
-        [DataType(DataType.Upload)]
         public string AucPic { get; set; }
     
         public virtual Adminbox Adminbox { get; set; }
-        public virtual Member Member { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuctionInvoice> AuctionInvoices { get; set; }
+        public virtual Member Member1 { get; set; }
     }
 }

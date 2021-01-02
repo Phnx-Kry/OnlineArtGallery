@@ -20,7 +20,7 @@
     <NavigationProperty Name="ArtInvoices" Relationship="Self.FK__ArtInvoic__appro__17036CC0" FromRole="Adminbox" ToRole="ArtInvoice" />
     <NavigationProperty Name="AuctionGalleries" Relationship="Self.FK__AuctionGa__Appro__09A971A2" FromRole="Adminbox" ToRole="AuctionGallery" />
     <NavigationProperty Name="AuctionInvoices" Relationship="Self.FK__AuctionIn__appro__0E6E26BF" FromRole="Adminbox" ToRole="AuctionInvoice" />
-    <NavigationProperty Name="Members" Relationship="Self.FK__Members__membera__05D8E0BE" FromRole="Adminbox" ToRole="Members" />
+    <NavigationProperty Name="Members1" Relationship="OnlineArtGalleryModel.FK__Member__memberap__1273C1CD" FromRole="Adminbox" ToRole="Member1" />
   </EntityType>
   <EntityType Name="ArtGallery">
     <Key>
@@ -36,9 +36,9 @@
     <Property Name="artistId_FK" Type="Int32" />
     <Property Name="approvedbyadminid_FK" Type="Int32" />
     <NavigationProperty Name="Adminbox" Relationship="Self.FK__ArtGaller__appro__123EB7A3" FromRole="ArtGallery" ToRole="Adminbox" />
-    <NavigationProperty Name="Member" Relationship="Self.FK__ArtGaller__artis__114A936A" FromRole="ArtGallery" ToRole="Members" />
     <NavigationProperty Name="ArtInvoices" Relationship="Self.FK__ArtInvoic__artid__160F4887" FromRole="ArtGallery" ToRole="ArtInvoice" />
     <Property Name="ArtPic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Member1" Relationship="OnlineArtGalleryModel.FK__ArtGaller__artis__1DE57479" FromRole="ArtGallery" ToRole="Member1" />
   </EntityType>
   <EntityType Name="ArtInvoice">
     <Key>
@@ -52,7 +52,7 @@
     <Property Name="approvedbyadminid_FK" Type="Int32" />
     <NavigationProperty Name="Adminbox" Relationship="Self.FK__ArtInvoic__appro__17036CC0" FromRole="ArtInvoice" ToRole="Adminbox" />
     <NavigationProperty Name="ArtGallery" Relationship="Self.FK__ArtInvoic__artid__160F4887" FromRole="ArtInvoice" ToRole="ArtGallery" />
-    <NavigationProperty Name="Member" Relationship="Self.FK__ArtInvoic__custo__151B244E" FromRole="ArtInvoice" ToRole="Members" />
+    <NavigationProperty Name="Member1" Relationship="OnlineArtGalleryModel.FK__ArtInvoic__custo__21B6055D" FromRole="ArtInvoice" ToRole="Member1" />
   </EntityType>
   <EntityType Name="AuctionGallery">
     <Key>
@@ -69,9 +69,9 @@
     <Property Name="ArtistId_FK" Type="Int32" />
     <Property Name="Approvedbyadminid_FK" Type="Int32" />
     <NavigationProperty Name="Adminbox" Relationship="Self.FK__AuctionGa__Appro__09A971A2" FromRole="AuctionGallery" ToRole="Adminbox" />
-    <NavigationProperty Name="Member" Relationship="Self.FK__AuctionGa__Artis__08B54D69" FromRole="AuctionGallery" ToRole="Members" />
     <NavigationProperty Name="AuctionInvoices" Relationship="Self.FK__AuctionIn__artid__0D7A0286" FromRole="AuctionGallery" ToRole="AuctionInvoice" />
     <Property Name="AucPic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Member1" Relationship="OnlineArtGalleryModel.FK__AuctionGa__Artis__15502E78" FromRole="AuctionGallery" ToRole="Member1" />
   </EntityType>
   <EntityType Name="AuctionInvoice">
     <Key>
@@ -85,33 +85,7 @@
     <Property Name="approvedbyadminid_FK" Type="Int32" />
     <NavigationProperty Name="Adminbox" Relationship="Self.FK__AuctionIn__appro__0E6E26BF" FromRole="AuctionInvoice" ToRole="Adminbox" />
     <NavigationProperty Name="AuctionGallery" Relationship="Self.FK__AuctionIn__artid__0D7A0286" FromRole="AuctionInvoice" ToRole="AuctionGallery" />
-    <NavigationProperty Name="Member" Relationship="Self.FK__AuctionIn__custo__0C85DE4D" FromRole="AuctionInvoice" ToRole="Members" />
-  </EntityType>
-  <EntityType Name="Member">
-    <Key>
-      <PropertyRef Name="memberId" />
-    </Key>
-    <Property Name="memberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="memberFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="memberLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="memberPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="memberDOB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="memberAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="memberCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="memberZip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="memberState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="memberCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="memberCellPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="memberEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="dateofjoining" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="memberapprovedbyadminid_fk" Type="Int32" />
-    <Property Name="memberSoldProducts" Type="Int32" />
-    <Property Name="memberBuyedProducts" Type="Int32" />
-    <NavigationProperty Name="Adminbox" Relationship="Self.FK__Members__membera__05D8E0BE" FromRole="Members" ToRole="Adminbox" />
-    <NavigationProperty Name="ArtGalleries" Relationship="Self.FK__ArtGaller__artis__114A936A" FromRole="Members" ToRole="ArtGallery" />
-    <NavigationProperty Name="ArtInvoices" Relationship="Self.FK__ArtInvoic__custo__151B244E" FromRole="Members" ToRole="ArtInvoice" />
-    <NavigationProperty Name="AuctionGalleries" Relationship="Self.FK__AuctionGa__Artis__08B54D69" FromRole="Members" ToRole="AuctionGallery" />
-    <NavigationProperty Name="AuctionInvoices" Relationship="Self.FK__AuctionIn__custo__0C85DE4D" FromRole="Members" ToRole="AuctionInvoice" />
+    <NavigationProperty Name="Member1" Relationship="OnlineArtGalleryModel.FK__AuctionIn__custo__1920BF5C" FromRole="AuctionInvoice" ToRole="Member1" />
   </EntityType>
   <Association Name="FK__ArtGaller__appro__123EB7A3">
     <End Role="Adminbox" Type="Self.Adminbox" Multiplicity="0..1" />
@@ -161,30 +135,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Members__membera__05D8E0BE">
-    <End Role="Adminbox" Type="Self.Adminbox" Multiplicity="0..1" />
-    <End Role="Members" Type="Self.Member" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Adminbox">
-        <PropertyRef Name="adminId" />
-      </Principal>
-      <Dependent Role="Members">
-        <PropertyRef Name="memberapprovedbyadminid_fk" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ArtGaller__artis__114A936A">
-    <End Role="Members" Type="Self.Member" Multiplicity="0..1" />
-    <End Role="ArtGallery" Type="Self.ArtGallery" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Members">
-        <PropertyRef Name="memberId" />
-      </Principal>
-      <Dependent Role="ArtGallery">
-        <PropertyRef Name="artistId_FK" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__ArtInvoic__artid__160F4887">
     <End Role="ArtGallery" Type="Self.ArtGallery" Multiplicity="0..1" />
     <End Role="ArtInvoice" Type="Self.ArtInvoice" Multiplicity="*" />
@@ -194,30 +144,6 @@
       </Principal>
       <Dependent Role="ArtInvoice">
         <PropertyRef Name="artid_FK" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ArtInvoic__custo__151B244E">
-    <End Role="Members" Type="Self.Member" Multiplicity="0..1" />
-    <End Role="ArtInvoice" Type="Self.ArtInvoice" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Members">
-        <PropertyRef Name="memberId" />
-      </Principal>
-      <Dependent Role="ArtInvoice">
-        <PropertyRef Name="customerid_FK" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__AuctionGa__Artis__08B54D69">
-    <End Role="Members" Type="Self.Member" Multiplicity="0..1" />
-    <End Role="AuctionGallery" Type="Self.AuctionGallery" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Members">
-        <PropertyRef Name="memberId" />
-      </Principal>
-      <Dependent Role="AuctionGallery">
-        <PropertyRef Name="ArtistId_FK" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -233,25 +159,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__AuctionIn__custo__0C85DE4D">
-    <End Role="Members" Type="Self.Member" Multiplicity="0..1" />
-    <End Role="AuctionInvoice" Type="Self.AuctionInvoice" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Members">
-        <PropertyRef Name="memberId" />
-      </Principal>
-      <Dependent Role="AuctionInvoice">
-        <PropertyRef Name="customerid_FK" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="OnlineArtGalleryEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Adminboxes" EntityType="Self.Adminbox" />
     <EntitySet Name="ArtGalleries" EntityType="Self.ArtGallery" />
     <EntitySet Name="ArtInvoices" EntityType="Self.ArtInvoice" />
     <EntitySet Name="AuctionGalleries" EntityType="Self.AuctionGallery" />
     <EntitySet Name="AuctionInvoices" EntityType="Self.AuctionInvoice" />
-    <EntitySet Name="Members" EntityType="Self.Member" />
     <AssociationSet Name="FK__ArtGaller__appro__123EB7A3" Association="Self.FK__ArtGaller__appro__123EB7A3">
       <End Role="Adminbox" EntitySet="Adminboxes" />
       <End Role="ArtGallery" EntitySet="ArtGalleries" />
@@ -268,33 +181,120 @@
       <End Role="Adminbox" EntitySet="Adminboxes" />
       <End Role="AuctionInvoice" EntitySet="AuctionInvoices" />
     </AssociationSet>
-    <AssociationSet Name="FK__Members__membera__05D8E0BE" Association="Self.FK__Members__membera__05D8E0BE">
-      <End Role="Adminbox" EntitySet="Adminboxes" />
-      <End Role="Members" EntitySet="Members" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ArtGaller__artis__114A936A" Association="Self.FK__ArtGaller__artis__114A936A">
-      <End Role="Members" EntitySet="Members" />
-      <End Role="ArtGallery" EntitySet="ArtGalleries" />
-    </AssociationSet>
     <AssociationSet Name="FK__ArtInvoic__artid__160F4887" Association="Self.FK__ArtInvoic__artid__160F4887">
       <End Role="ArtGallery" EntitySet="ArtGalleries" />
       <End Role="ArtInvoice" EntitySet="ArtInvoices" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ArtInvoic__custo__151B244E" Association="Self.FK__ArtInvoic__custo__151B244E">
-      <End Role="Members" EntitySet="Members" />
-      <End Role="ArtInvoice" EntitySet="ArtInvoices" />
-    </AssociationSet>
-    <AssociationSet Name="FK__AuctionGa__Artis__08B54D69" Association="Self.FK__AuctionGa__Artis__08B54D69">
-      <End Role="Members" EntitySet="Members" />
-      <End Role="AuctionGallery" EntitySet="AuctionGalleries" />
     </AssociationSet>
     <AssociationSet Name="FK__AuctionIn__artid__0D7A0286" Association="Self.FK__AuctionIn__artid__0D7A0286">
       <End Role="AuctionGallery" EntitySet="AuctionGalleries" />
       <End Role="AuctionInvoice" EntitySet="AuctionInvoices" />
     </AssociationSet>
-    <AssociationSet Name="FK__AuctionIn__custo__0C85DE4D" Association="Self.FK__AuctionIn__custo__0C85DE4D">
-      <End Role="Members" EntitySet="Members" />
+    <EntitySet Name="Members" EntityType="OnlineArtGalleryModel.Member" />
+    <AssociationSet Name="FK__Member__memberap__1273C1CD" Association="OnlineArtGalleryModel.FK__Member__memberap__1273C1CD">
+      <End Role="Adminbox" EntitySet="Adminboxes" />
+      <End Role="Member1" EntitySet="Members" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ArtGaller__artis__1DE57479" Association="OnlineArtGalleryModel.FK__ArtGaller__artis__1DE57479">
+      <End Role="Member1" EntitySet="Members" />
+      <End Role="ArtGallery" EntitySet="ArtGalleries" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ArtInvoic__custo__21B6055D" Association="OnlineArtGalleryModel.FK__ArtInvoic__custo__21B6055D">
+      <End Role="Member1" EntitySet="Members" />
+      <End Role="ArtInvoice" EntitySet="ArtInvoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AuctionGa__Artis__15502E78" Association="OnlineArtGalleryModel.FK__AuctionGa__Artis__15502E78">
+      <End Role="Member1" EntitySet="Members" />
+      <End Role="AuctionGallery" EntitySet="AuctionGalleries" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AuctionIn__custo__1920BF5C" Association="OnlineArtGalleryModel.FK__AuctionIn__custo__1920BF5C">
+      <End Role="Member1" EntitySet="Members" />
       <End Role="AuctionInvoice" EntitySet="AuctionInvoices" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="memberId" />
+    </Key>
+    <Property Name="memberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="memberFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="memberLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="memberPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="memberDOB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="memberAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="memberCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="memberZip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="memberState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="memberCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="memberCellPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="memberEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dateofjoining" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="memberapprovedbyadminid_fk" Type="Int32" />
+    <Property Name="memberSoldProducts" Type="Int32" />
+    <Property Name="memberBuyedProducts" Type="Int32" />
+    <NavigationProperty Name="Adminbox" Relationship="OnlineArtGalleryModel.FK__Member__memberap__1273C1CD" FromRole="Member1" ToRole="Adminbox" />
+    <NavigationProperty Name="ArtGalleries" Relationship="OnlineArtGalleryModel.FK__ArtGaller__artis__1DE57479" FromRole="Member1" ToRole="ArtGallery" />
+    <NavigationProperty Name="ArtInvoices" Relationship="OnlineArtGalleryModel.FK__ArtInvoic__custo__21B6055D" FromRole="Member1" ToRole="ArtInvoice" />
+    <NavigationProperty Name="AuctionGalleries" Relationship="OnlineArtGalleryModel.FK__AuctionGa__Artis__15502E78" FromRole="Member1" ToRole="AuctionGallery" />
+    <NavigationProperty Name="AuctionInvoices" Relationship="OnlineArtGalleryModel.FK__AuctionIn__custo__1920BF5C" FromRole="Member1" ToRole="AuctionInvoice" />
+  </EntityType>
+  <Association Name="FK__Member__memberap__1273C1CD">
+    <End Type="OnlineArtGalleryModel.Adminbox" Role="Adminbox" Multiplicity="0..1" />
+    <End Type="OnlineArtGalleryModel.Member" Role="Member1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adminbox">
+        <PropertyRef Name="adminId" />
+      </Principal>
+      <Dependent Role="Member1">
+        <PropertyRef Name="memberapprovedbyadminid_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ArtGaller__artis__1DE57479">
+    <End Type="OnlineArtGalleryModel.Member" Role="Member1" Multiplicity="0..1" />
+    <End Type="OnlineArtGalleryModel.ArtGallery" Role="ArtGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member1">
+        <PropertyRef Name="memberId" />
+      </Principal>
+      <Dependent Role="ArtGallery">
+        <PropertyRef Name="artistId_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ArtInvoic__custo__21B6055D">
+    <End Type="OnlineArtGalleryModel.Member" Role="Member1" Multiplicity="0..1" />
+    <End Type="OnlineArtGalleryModel.ArtInvoice" Role="ArtInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member1">
+        <PropertyRef Name="memberId" />
+      </Principal>
+      <Dependent Role="ArtInvoice">
+        <PropertyRef Name="customerid_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AuctionGa__Artis__15502E78">
+    <End Type="OnlineArtGalleryModel.Member" Role="Member1" Multiplicity="0..1" />
+    <End Type="OnlineArtGalleryModel.AuctionGallery" Role="AuctionGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member1">
+        <PropertyRef Name="memberId" />
+      </Principal>
+      <Dependent Role="AuctionGallery">
+        <PropertyRef Name="ArtistId_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AuctionIn__custo__1920BF5C">
+    <End Type="OnlineArtGalleryModel.Member" Role="Member1" Multiplicity="0..1" />
+    <End Type="OnlineArtGalleryModel.AuctionInvoice" Role="AuctionInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member1">
+        <PropertyRef Name="memberId" />
+      </Principal>
+      <Dependent Role="AuctionInvoice">
+        <PropertyRef Name="customerid_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
