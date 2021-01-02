@@ -17,8 +17,8 @@ namespace artgallery.Controllers
             return View();
         }
 
-
-        public ActionResult Upload()  
+        [Authorize]
+        public ActionResult Upload()
         {
             var getAdmins = db.Adminboxes.ToList();
             SelectList adminList = new SelectList(getAdmins, "adminId", "adminFirstName");

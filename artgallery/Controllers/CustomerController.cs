@@ -33,13 +33,18 @@ namespace artgallery.Controllers
             var membes = db.Members.Where(x => x.memberEmail == m.memberEmail && x.memberPassword == m.memberPassword).FirstOrDefault();
 
 
-                if(membes!=null)
+            if (membes != null)
+            {
+                FormsAuthentication.SetAuthCookie(m.memberEmail, false);
+                var profileData = new Member
                 {
-                    FormsAuthentication.SetAuthCookie(m.memberEmail, false);
-                    Session["userDetail"] = m.memberId.ToString();
-                Session["userName"] = m.memberFirstName.ToString();
-                    return RedirectToAction("Account");
-            }
+                    memberId = m.memberId,
+                    memberFirstName = m.memberFirstName
+                };
+
+                this.Session["UserProfile"] = profileData;
+                return RedirectToAction("Account");
+                }
             else
             {
                 ViewBag.error = "Invalid Username or id";
@@ -86,8 +91,8 @@ namespace artgallery.Controllers
         [Authorize]
         public ActionResult Account()  // profile ViewRead Page
         {
-
-            ViewBag.Welcome = Session["userName"];
+            var profileData = this.Session["UserProfile"] as Member;
+            
 
             return View();
         }
