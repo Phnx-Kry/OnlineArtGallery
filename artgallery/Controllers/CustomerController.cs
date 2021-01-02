@@ -81,6 +81,8 @@ namespace artgallery.Controllers
                 };
 
                 this.Session["UserProfile"] = profileData;
+                Session["UserId"] = m.memberId;
+                Session["UName"] = m.memberFirstName + m.memberLastName;
                 return RedirectToAction("Account");
             }
             else
@@ -96,7 +98,10 @@ namespace artgallery.Controllers
         public ActionResult Account()  // profile ViewRead Page
         {
 
-
+            if (Session["UserProfile"] == null)
+            {
+                return RedirectToAction("MemberLogin");
+            }
 
             return View();
         }
@@ -106,7 +111,7 @@ namespace artgallery.Controllers
             Session.RemoveAll();
             Session.Abandon();
 
-            return View("MemberLogin");
+            return RedirectToAction("MemberLogin");
         }
     }
 }
