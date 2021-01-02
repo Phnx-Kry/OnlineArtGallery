@@ -6,5 +6,19 @@
 <div class="main">
     <h2>User Account</h2>
     <h4 class="text-success"> Welcome @ViewBag.Membername ... </h4>
+
+    <p>
+        <ul>
+
+            <li>@Html.ActionLink("Upload New Art", "Upload", "SimpleArtGallery");</li>
+            <li>@Html.ActionLink("Buy Art", "", "");</li>
+
+            <li>@Html.ActionLink("Upload To Auction Art", "Upload", "AuctionGallery");</li>
+            <li>@Html.ActionLink("Start Bidding", "", "");</li>
+        </ul>
+
+        
+
+    </p>
 </div>
 

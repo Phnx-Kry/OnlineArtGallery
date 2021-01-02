@@ -14,9 +14,12 @@ namespace artgallery.Controllers
         // GET: AuctionGallery
         public ActionResult Index()
         {
+
+
             return View();
         }
 
+        //get: AuctionGallery/Upload
         [Authorize]
         public ActionResult Upload()
         {

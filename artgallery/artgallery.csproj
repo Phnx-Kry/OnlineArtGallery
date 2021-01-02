@@ -133,7 +133,8 @@
     <Compile Include="Controllers\AuctionGalleryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
+    <Compile Include="Controllers\SimpleArtGalleryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -427,10 +428,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Store\Upload.cshtml" />
+    <Content Include="Views\SimpleArtGallery\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Invoice\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
