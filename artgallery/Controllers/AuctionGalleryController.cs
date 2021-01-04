@@ -15,11 +15,12 @@ namespace artgallery.Controllers
         // GET: AuctionGallery
         public ActionResult Index()
         {
-            List<ArtCategory> getCategry = db.ArtCategories.ToList();
+            List<AucCategory> getCategry = db.AucCategories.ToList();
             SelectList categoryList = new SelectList(getCategry, "cat_Id", "cat_name");
-            ViewBag.categorylist = categoryList;
+            
+            ViewBag.categorylist = categoryList.ToList();
 
-            return View();
+            return View(db.AuctionGalleries.ToList());
         }
 
         //get: AuctionGallery/Upload

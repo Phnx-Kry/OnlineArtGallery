@@ -18,7 +18,7 @@ values ( 'Goku','Ultra Instinct is the best <3',9999999,1,'~/Content/Data/Goku.j
 
 delete from ArtGallery where ArtId = 3;
 insert into AuctionGallery(AucTitle, AucDescription, AucCategory, Currentbid, IsSold, DateUploaded, EndingDate, AucPic, ArtistId_FK, Approvedbyadminid_FK)
-values ( '','','','','','','','','','','');
+values ( 'Data','is is the shoping page',2,2500,0,'today','notsure','~/Content/Data/shop.png',2,1);
 
 /*
 

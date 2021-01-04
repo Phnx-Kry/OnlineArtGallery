@@ -19,7 +19,9 @@ namespace artgallery.Controllers
             SelectList categoryList = new SelectList(getCategry, "cat_Id", "cat_name");
             ViewBag.categorylist = categoryList;
 
-            return View(ViewBag.categorylist);
+
+
+            return View(db.ArtGalleries.ToList());
         }
 
 
