@@ -55,6 +55,13 @@ namespace artgallery.Controllers
 
             return View();
         }
+
+        public ActionResult AuctionBlog()
+        {
+            return View();
+        }
+
+
     }
 
 

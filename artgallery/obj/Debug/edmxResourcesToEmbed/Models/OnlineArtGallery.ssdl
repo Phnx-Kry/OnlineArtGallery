@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OnlineArtGalleryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Adminbox">
+    <Key>
+      <PropertyRef Name="adminId" />
+    </Key>
+    <Property Name="adminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adminFirstName" Type="nvarchar" MaxLength="30" />
+    <Property Name="adminLastName" Type="nvarchar" MaxLength="30" />
+    <Property Name="adminPassword" Type="nvarchar" MaxLength="30" />
+    <Property Name="adminDOB" Type="nvarchar" MaxLength="30" />
+    <Property Name="adminAddress" Type="nvarchar" MaxLength="30" />
+    <Property Name="adminCity" Type="nvarchar" MaxLength="30" />
+    <Property Name="adminZip" Type="nvarchar" MaxLength="10" />
+    <Property Name="adminState" Type="nvarchar" MaxLength="30" />
+    <Property Name="adminCountry" Type="nvarchar" MaxLength="30" />
+    <Property Name="adminCellPhone" Type="nvarchar" MaxLength="30" />
+    <Property Name="adminEmail" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ArtCategories">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat_name" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="ArtGallery">
+    <Key>
+      <PropertyRef Name="ArtId" />
+    </Key>
+    <Property Name="ArtId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArtTitle" Type="varchar" MaxLength="50" />
+    <Property Name="ArtDescription" Type="varchar" MaxLength="500" />
+    <Property Name="ArtPrice" Type="int" Nullable="false" />
+    <Property Name="ArtCategory" Type="int" Nullable="false" />
+    <Property Name="ArtPic" Type="nvarchar(max)" />
+    <Property Name="IsSold" Type="bit" />
+    <Property Name="approvalDate" Type="varchar" MaxLength="20" />
+    <Property Name="artistId_FK" Type="int" />
+    <Property Name="approvedbyadminid_FK" Type="int" />
+  </EntityType>
+  <EntityType Name="ArtInvoice">
+    <Key>
+      <PropertyRef Name="ArtinvoiceId" />
+    </Key>
+    <Property Name="ArtinvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datesold" Type="varchar" MaxLength="20" />
+    <Property Name="customerid_FK" Type="int" />
+    <Property Name="artid_FK" Type="int" />
+    <Property Name="paymentmode" Type="varchar" MaxLength="20" />
+    <Property Name="approvedbyadminid_FK" Type="int" />
+  </EntityType>
+  <EntityType Name="AucCategories">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat_name" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="AuctionGallery">
+    <Key>
+      <PropertyRef Name="AucId" />
+    </Key>
+    <Property Name="AucId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AucTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="AucDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="AucCategory" Type="int" Nullable="false" />
+    <Property Name="Currentbid" Type="int" />
+    <Property Name="IsSold" Type="bit" />
+    <Property Name="DateUploaded" Type="nvarchar" MaxLength="50" />
+    <Property Name="EndingDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="AucPic" Type="nvarchar(max)" />
+    <Property Name="ArtistId_FK" Type="int" />
+    <Property Name="Approvedbyadminid_FK" Type="int" />
+  </EntityType>
+  <EntityType Name="AuctionInvoice">
+    <Key>
+      <PropertyRef Name="AucInvoiceId" />
+    </Key>
+    <Property Name="AucInvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datesold" Type="varchar" MaxLength="50" />
+    <Property Name="customerid_FK" Type="int" />
+    <Property Name="artid_FK" Type="int" />
+    <Property Name="paymentmode" Type="varchar" MaxLength="50" />
+    <Property Name="approvedbyadminid_FK" Type="int" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="memberId" />
+    </Key>
+    <Property Name="memberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="memberFirstName" Type="varchar" MaxLength="50" />
+    <Property Name="memberLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="memberPassword" Type="varchar" MaxLength="50" />
+    <Property Name="memberDOB" Type="nvarchar" MaxLength="50" />
+    <Property Name="memberAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="memberCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="memberZip" Type="nvarchar" MaxLength="50" />
+    <Property Name="memberState" Type="nvarchar" MaxLength="50" />
+    <Property Name="memberCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="memberCellPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="memberEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="dateofjoining" Type="nvarchar" MaxLength="50" />
+    <Property Name="memberapprovedbyadminid_fk" Type="int" />
+    <Property Name="memberSoldProducts" Type="int" />
+    <Property Name="memberBuyedProducts" Type="int" />
+  </EntityType>
+  <Association Name="FK__ArtGaller__appro__10216507">
+    <End Role="Adminbox" Type="Self.Adminbox" Multiplicity="0..1" />
+    <End Role="ArtGallery" Type="Self.ArtGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adminbox">
+        <PropertyRef Name="adminId" />
+      </Principal>
+      <Dependent Role="ArtGallery">
+        <PropertyRef Name="approvedbyadminid_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ArtGaller__ArtCa__0E391C95">
+    <End Role="ArtCategories" Type="Self.ArtCategories" Multiplicity="1" />
+    <End Role="ArtGallery" Type="Self.ArtGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArtCategories">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="ArtGallery">
+        <PropertyRef Name="ArtCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ArtGaller__artis__0F2D40CE">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="ArtGallery" Type="Self.ArtGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="memberId" />
+      </Principal>
+      <Dependent Role="ArtGallery">
+        <PropertyRef Name="artistId_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ArtInvoic__appro__14E61A24">
+    <End Role="Adminbox" Type="Self.Adminbox" Multiplicity="0..1" />
+    <End Role="ArtInvoice" Type="Self.ArtInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adminbox">
+        <PropertyRef Name="adminId" />
+      </Principal>
+      <Dependent Role="ArtInvoice">
+        <PropertyRef Name="approvedbyadminid_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ArtInvoic__artid__13F1F5EB">
+    <End Role="ArtGallery" Type="Self.ArtGallery" Multiplicity="0..1" />
+    <End Role="ArtInvoice" Type="Self.ArtInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArtGallery">
+        <PropertyRef Name="ArtId" />
+      </Principal>
+      <Dependent Role="ArtInvoice">
+        <PropertyRef Name="artid_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ArtInvoic__custo__12FDD1B2">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="ArtInvoice" Type="Self.ArtInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="memberId" />
+      </Principal>
+      <Dependent Role="ArtInvoice">
+        <PropertyRef Name="customerid_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AuctionGa__Appro__04AFB25B">
+    <End Role="Adminbox" Type="Self.Adminbox" Multiplicity="0..1" />
+    <End Role="AuctionGallery" Type="Self.AuctionGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adminbox">
+        <PropertyRef Name="adminId" />
+      </Principal>
+      <Dependent Role="AuctionGallery">
+        <PropertyRef Name="Approvedbyadminid_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AuctionGa__Artis__03BB8E22">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="AuctionGallery" Type="Self.AuctionGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="memberId" />
+      </Principal>
+      <Dependent Role="AuctionGallery">
+        <PropertyRef Name="ArtistId_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AuctionGa__AucCa__02C769E9">
+    <End Role="AucCategories" Type="Self.AucCategories" Multiplicity="1" />
+    <End Role="AuctionGallery" Type="Self.AuctionGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AucCategories">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="AuctionGallery">
+        <PropertyRef Name="AucCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AuctionIn__appro__09746778">
+    <End Role="Adminbox" Type="Self.Adminbox" Multiplicity="0..1" />
+    <End Role="AuctionInvoice" Type="Self.AuctionInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adminbox">
+        <PropertyRef Name="adminId" />
+      </Principal>
+      <Dependent Role="AuctionInvoice">
+        <PropertyRef Name="approvedbyadminid_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AuctionIn__artid__0880433F">
+    <End Role="AuctionGallery" Type="Self.AuctionGallery" Multiplicity="0..1" />
+    <End Role="AuctionInvoice" Type="Self.AuctionInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AuctionGallery">
+        <PropertyRef Name="AucId" />
+      </Principal>
+      <Dependent Role="AuctionInvoice">
+        <PropertyRef Name="artid_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AuctionIn__custo__078C1F06">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="AuctionInvoice" Type="Self.AuctionInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="memberId" />
+      </Principal>
+      <Dependent Role="AuctionInvoice">
+        <PropertyRef Name="customerid_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Member__memberap__7E02B4CC">
+    <End Role="Adminbox" Type="Self.Adminbox" Multiplicity="0..1" />
+    <End Role="Member" Type="Self.Member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adminbox">
+        <PropertyRef Name="adminId" />
+      </Principal>
+      <Dependent Role="Member">
+        <PropertyRef Name="memberapprovedbyadminid_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OnlineArtGalleryModelStoreContainer">
+    <EntitySet Name="Adminbox" EntityType="Self.Adminbox" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ArtCategories" EntityType="Self.ArtCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ArtGallery" EntityType="Self.ArtGallery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ArtInvoice" EntityType="Self.ArtInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AucCategories" EntityType="Self.AucCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AuctionGallery" EntityType="Self.AuctionGallery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AuctionInvoice" EntityType="Self.AuctionInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ArtGaller__appro__10216507" Association="Self.FK__ArtGaller__appro__10216507">
+      <End Role="Adminbox" EntitySet="Adminbox" />
+      <End Role="ArtGallery" EntitySet="ArtGallery" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ArtGaller__ArtCa__0E391C95" Association="Self.FK__ArtGaller__ArtCa__0E391C95">
+      <End Role="ArtCategories" EntitySet="ArtCategories" />
+      <End Role="ArtGallery" EntitySet="ArtGallery" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ArtGaller__artis__0F2D40CE" Association="Self.FK__ArtGaller__artis__0F2D40CE">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="ArtGallery" EntitySet="ArtGallery" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ArtInvoic__appro__14E61A24" Association="Self.FK__ArtInvoic__appro__14E61A24">
+      <End Role="Adminbox" EntitySet="Adminbox" />
+      <End Role="ArtInvoice" EntitySet="ArtInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ArtInvoic__artid__13F1F5EB" Association="Self.FK__ArtInvoic__artid__13F1F5EB">
+      <End Role="ArtGallery" EntitySet="ArtGallery" />
+      <End Role="ArtInvoice" EntitySet="ArtInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ArtInvoic__custo__12FDD1B2" Association="Self.FK__ArtInvoic__custo__12FDD1B2">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="ArtInvoice" EntitySet="ArtInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AuctionGa__Appro__04AFB25B" Association="Self.FK__AuctionGa__Appro__04AFB25B">
+      <End Role="Adminbox" EntitySet="Adminbox" />
+      <End Role="AuctionGallery" EntitySet="AuctionGallery" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AuctionGa__Artis__03BB8E22" Association="Self.FK__AuctionGa__Artis__03BB8E22">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="AuctionGallery" EntitySet="AuctionGallery" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AuctionGa__AucCa__02C769E9" Association="Self.FK__AuctionGa__AucCa__02C769E9">
+      <End Role="AucCategories" EntitySet="AucCategories" />
+      <End Role="AuctionGallery" EntitySet="AuctionGallery" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AuctionIn__appro__09746778" Association="Self.FK__AuctionIn__appro__09746778">
+      <End Role="Adminbox" EntitySet="Adminbox" />
+      <End Role="AuctionInvoice" EntitySet="AuctionInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AuctionIn__artid__0880433F" Association="Self.FK__AuctionIn__artid__0880433F">
+      <End Role="AuctionGallery" EntitySet="AuctionGallery" />
+      <End Role="AuctionInvoice" EntitySet="AuctionInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AuctionIn__custo__078C1F06" Association="Self.FK__AuctionIn__custo__078C1F06">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="AuctionInvoice" EntitySet="AuctionInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Member__memberap__7E02B4CC" Association="Self.FK__Member__memberap__7E02B4CC">
+      <End Role="Adminbox" EntitySet="Adminbox" />
+      <End Role="Member" EntitySet="Member" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

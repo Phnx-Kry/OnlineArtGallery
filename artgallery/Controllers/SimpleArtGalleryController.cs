@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace artgallery.Controllers
 {
     public class SimpleArtGalleryController : Controller
@@ -14,12 +15,17 @@ namespace artgallery.Controllers
         // GET: SimpleArtGallery
         public ActionResult Index()
         {
-            return View();
+            List<ArtCategory> getCategry = db.ArtCategories.ToList();
+            SelectList categoryList = new SelectList(getCategry, "cat_Id", "cat_name");
+            ViewBag.categorylist = categoryList;
+
+            return View(db.ArtGalleries.ToList());
         }
 
 
         //get: SimpleArtGallery/Upload
         [Authorize]
+        [HttpGet]
         public ActionResult Upload()
         {
 
@@ -29,8 +35,13 @@ namespace artgallery.Controllers
                 return RedirectToAction("MemberLogin", "Customer");
 
             }
-            else { 
-            var getAdmins = db.Adminboxes.ToList();
+            else {
+
+                List<ArtCategory> getCategry = db.ArtCategories.ToList();
+                SelectList categoryList = new SelectList(getCategry, "cat_Id", "cat_name");
+                ViewBag.categorylist = categoryList;
+
+                var getAdmins = db.Adminboxes.ToList();
             SelectList adminList = new SelectList(getAdmins, "adminId", "adminFirstName");
             ViewBag.getAdminList = adminList;
 
@@ -43,13 +54,30 @@ namespace artgallery.Controllers
         }
         [Authorize]
         [HttpPost]
-        public ActionResult Upload(ArtGallery pics, HttpPostedFileBase imgfile)
+        public ActionResult Upload(HttpPostedFileBase imgfile, ArtGallery pics)
         {
+            /*
+                        string filename = Path.GetFileName(file.FileName);
+                        string _filename = DateTime.Now.ToString("yymmssff") + filename;
+
+                        string path = Path.Combine(Server.MapPath("~/Content/Data"), _filename);
+
+                        pics.ArtPic = "~/Content/Data" + _filename;
+
+                        db.ArtGalleries.Add(pics);
+
+                        if (db.SaveChanges()>0)
+                        {
+                            file.SaveAs(path);
+                            ViewBag.msg = "Picture Added to GAllery";
+                            ModelState.Clear();
+                        }
+            */
 
 
+            string path = Uploadimage(imgfile);
 
-            
-            string path = uploadimage(imgfile);
+
 
             if (path.Equals("-1"))
             {
@@ -71,43 +99,46 @@ namespace artgallery.Controllers
                 db.ArtGalleries.Add(gal);
                 db.SaveChanges();
 
+                ViewBag.msg = "Pic Uploaded Sucessfully";
+
+
                 Response.Redirect("Index");
             }
 
-                /*if (ModelState.IsValid)
+            /*if (ModelState.IsValid)
+            {
+                db.ArtGalleries.Add(pics);
+                if (db.SaveChanges() > 0)
                 {
-                    db.ArtGalleries.Add(pics);
-                    if (db.SaveChanges() > 0)
-                    {
-                        TempData["msg"] = "Pic Uploaded";
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        return View();
-                    }
-                }*/
-                return View();
+                    TempData["msg"] = "Pic Uploaded";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View();
+                }
+            }*/
+            return RedirectToAction("Upload");
         }
 
 
 
 
-        public string uploadimage(HttpPostedFileBase file)
+        public string Uploadimage(HttpPostedFileBase imgfile)
 
         {
-
+            
             Random r = new Random();
 
             string path = "-1";
 
             int random = r.Next();
 
-            if (file != null && file.ContentLength > 0)
+            if (imgfile != null && imgfile.ContentLength > 0)
 
             {
 
-                string extension = Path.GetExtension(file.FileName);
+                string extension = Path.GetExtension(imgfile.FileName);
 
                 if (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg") || extension.ToLower().Equals(".png"))
 
@@ -118,11 +149,11 @@ namespace artgallery.Controllers
 
 
 
-                        path = Path.Combine(Server.MapPath("~/Content/upload"), random + Path.GetFileName(file.FileName));
+                        path = Path.Combine(Server.MapPath("~/Content/Data/"), random + Path.GetFileName(imgfile.FileName));
 
-                        file.SaveAs(path);
+                        imgfile.SaveAs(path);
 
-                        path = "~/Content/upload/" + random + Path.GetFileName(file.FileName);
+                        path = "~/Content/Data/" + random + Path.GetFileName(imgfile.FileName);
 
 
 
@@ -130,10 +161,10 @@ namespace artgallery.Controllers
 
                     }
 
-                    catch (Exception)
+                    catch (Exception ex)
 
                     {
-
+                        ViewBag.error2 = ex;/// nothing just removing error
                         path = "-1";
 
                     }

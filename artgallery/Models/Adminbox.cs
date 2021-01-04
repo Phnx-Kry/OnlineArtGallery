@@ -21,7 +21,7 @@ namespace artgallery.Models
             this.ArtInvoices = new HashSet<ArtInvoice>();
             this.AuctionGalleries = new HashSet<AuctionGallery>();
             this.AuctionInvoices = new HashSet<AuctionInvoice>();
-            this.Members1 = new HashSet<Member>();
+            this.Members = new HashSet<Member>();
         }
     
         public int adminId { get; set; }
@@ -46,6 +46,6 @@ namespace artgallery.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuctionInvoice> AuctionInvoices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Member> Members1 { get; set; }
+        public virtual ICollection<Member> Members { get; set; }
     }
 }

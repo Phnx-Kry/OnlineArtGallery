@@ -24,16 +24,17 @@ namespace artgallery.Models
         public string ArtTitle { get; set; }
         public string ArtDescription { get; set; }
         public int ArtPrice { get; set; }
-        public string ArtCategory { get; set; }
+        public int ArtCategory { get; set; }
+        public string ArtPic { get; set; }
         public Nullable<bool> IsSold { get; set; }
         public string approvalDate { get; set; }
         public Nullable<int> artistId_FK { get; set; }
         public Nullable<int> approvedbyadminid_FK { get; set; }
-        public string ArtPic { get; set; }
     
         public virtual Adminbox Adminbox { get; set; }
+        public virtual ArtCategory ArtCategory1 { get; set; }
+        public virtual Member Member { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArtInvoice> ArtInvoices { get; set; }
-        public virtual Member Member1 { get; set; }
     }
 }

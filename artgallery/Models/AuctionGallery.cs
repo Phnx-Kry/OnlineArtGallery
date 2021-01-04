@@ -23,18 +23,19 @@ namespace artgallery.Models
         public int AucId { get; set; }
         public string AucTitle { get; set; }
         public string AucDescription { get; set; }
-        public string AucCategory { get; set; }
+        public int AucCategory { get; set; }
         public Nullable<int> Currentbid { get; set; }
         public Nullable<bool> IsSold { get; set; }
         public string DateUploaded { get; set; }
         public string EndingDate { get; set; }
+        public string AucPic { get; set; }
         public Nullable<int> ArtistId_FK { get; set; }
         public Nullable<int> Approvedbyadminid_FK { get; set; }
-        public string AucPic { get; set; }
     
         public virtual Adminbox Adminbox { get; set; }
+        public virtual AucCategory AucCategory1 { get; set; }
+        public virtual Member Member { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuctionInvoice> AuctionInvoices { get; set; }
-        public virtual Member Member1 { get; set; }
     }
 }

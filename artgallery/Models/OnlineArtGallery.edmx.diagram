@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3beb1e1d70a14994bbb150955e77c85d" Name="Diagram1">
+        <EntityTypeShape EntityType="OnlineArtGalleryModel.Adminbox" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineArtGalleryModel.ArtCategory" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineArtGalleryModel.ArtGallery" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineArtGalleryModel.ArtInvoice" Width="1.5" PointX="10.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineArtGalleryModel.AucCategory" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineArtGalleryModel.AuctionGallery" Width="1.5" PointX="8.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineArtGalleryModel.AuctionInvoice" Width="1.5" PointX="13.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineArtGalleryModel.Member" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <AssociationConnector Association="OnlineArtGalleryModel.FK__ArtGaller__appro__10216507" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineArtGalleryModel.FK__ArtInvoic__appro__14E61A24" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineArtGalleryModel.FK__AuctionGa__Appro__04AFB25B" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineArtGalleryModel.FK__AuctionIn__appro__09746778" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineArtGalleryModel.FK__Member__memberap__7E02B4CC" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineArtGalleryModel.FK__ArtGaller__ArtCa__0E391C95" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineArtGalleryModel.FK__ArtGaller__artis__0F2D40CE" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineArtGalleryModel.FK__ArtInvoic__artid__13F1F5EB" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineArtGalleryModel.FK__ArtInvoic__custo__12FDD1B2" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineArtGalleryModel.FK__AuctionGa__AucCa__02C769E9" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineArtGalleryModel.FK__AuctionGa__Artis__03BB8E22" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineArtGalleryModel.FK__AuctionIn__artid__0880433F" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineArtGalleryModel.FK__AuctionIn__custo__078C1F06" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

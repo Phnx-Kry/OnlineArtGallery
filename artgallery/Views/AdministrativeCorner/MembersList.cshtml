@@ -54,9 +54,7 @@
         <th>
             @Html.DisplayNameFor(model => model.memberBuyedProducts)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.memberAge)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Adminbox.adminFirstName)
         </th>
@@ -107,14 +105,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.memberBuyedProducts)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.memberAge)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.Adminbox.adminFirstName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.memberId }) |
+            @Html.ActionLink("Edit", "AdMembersEdit", new { id=item.memberId }) |
             @Html.ActionLink("Details", "Details", new { id=item.memberId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.memberId })
         </td>

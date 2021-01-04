@@ -7,97 +7,115 @@
 
 <h2>Upload</h2>
 
-@using (Html.BeginForm()) 
+<h3 class="text-success"> @ViewBag.msg</h3>
+<h3 class="text-danger"> @ViewBag.error</h3>
+
+@using (Html.BeginForm("Upload", "SimpleArtGallery", FormMethod.Post, new { enctype = "multipart/formdata" }))
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>ArtGallery</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.ArtTitle, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ArtTitle, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ArtTitle, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ArtDescription, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ArtDescription, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ArtDescription, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ArtPrice, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ArtPrice, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ArtPrice, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ArtCategory, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ArtCategory, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ArtCategory, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.IsSold, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.IsSold)
-                @Html.ValidationMessageFor(model => model.IsSold, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <h4>ArtGallery</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArtTitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ArtTitle, "", new { @class = "text-danger" })
             </div>
         </div>
-    </div>*@
 
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.approvalDate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.approvalDate, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.approvalDate, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArtDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ArtDescription, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>*@
 
-@*
-    <div class="form-group">
-        @Html.LabelFor(model => model.artistId_FK, "ArtistId_FK", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.artistId_FK, (SelectList)ViewBag.getArtistList, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.artistId_FK, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArtPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ArtPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        @*<div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                    @Html.DropDownListFor(x => x.pro_user_id_fk, ViewBag.categorylist as SelectList, "--select--", new { @class = "form-control" })
+                </div>
+                <span style="color:red">   @Html.ValidationMessageFor(x => x.pro_user_id_fk) </span>
+
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtCategory, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownList("categorylist", "Select country")*@
+                @*@Html.DropDownList("categoryList", (IEnumerable<SelectListItem>)ViewBag.categorylist, "Select Category")*@
+                @*new SelectList(Model.Countries, "Value", "Text")  ViewBag.categorylist as SelectList*@
+                @Html.DropDownListFor(model => model.ArtCategory, ViewBag.categorylist as SelectList, htmlAttributes: new { @class = "form-control" })
+                @*@Html.EditorFor(model => model.ArtCategory, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.ArtCategory, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+                @Html.LabelFor(model => model.IsSold, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.IsSold)
+                        @Html.ValidationMessageFor(model => model.IsSold, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        <div class="form-group">
+                @Html.LabelFor(model => model.approvalDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.approvalDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.approvalDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        
+            <div class="form-group">
+                @Html.LabelFor(model => model.artistId_FK, "ArtistId_FK", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.artistId_FK, (SelectList)ViewBag.getArtistList, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.artistId_FK, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.approvedbyadminid_FK, "Approvedbyadminid_FK", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+
+                    @Html.DropDownListFor(model => model.approvedbyadminid_FK, (SelectList)ViewBag.getAdminList, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.approvedbyadminid_FK, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtPic, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @* @Html.EditorFor(model => model.ArtPic, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                <input type="file" name="imgfile" id="imgfile" class="form-control" required="required" />
+                @Html.ValidationMessageFor(model => model.ArtPic, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.approvedbyadminid_FK, "Approvedbyadminid_FK", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-
-            @Html.DropDownListFor(model => model.approvedbyadminid_FK, (SelectList)ViewBag.getAdminList, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.approvedbyadminid_FK, "", new { @class = "text-danger" })
-        </div>
-    </div>
-*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.ArtPic, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-           @* @Html.EditorFor(model => model.ArtPic, new { htmlAttributes = new { @class = "form-control" } })*@
-            <input type="file" id="img" name="imgfile" class=" btn btn-danger" />
-            @Html.ValidationMessageFor(model => model.ArtPic, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
 <div>
