@@ -11,11 +11,13 @@ namespace artgallery.Controllers
     public class AuctionGalleryController : Controller
     {
 
-        OnlineArtGalleryEntities db = new OnlineArtGalleryEntities();
+        OnlineArtGalleryEntities2 db = new OnlineArtGalleryEntities2();
         // GET: AuctionGallery
         public ActionResult Index()
         {
-
+            List<ArtCategory> getCategry = db.ArtCategories.ToList();
+            SelectList categoryList = new SelectList(getCategry, "cat_Id", "cat_name");
+            ViewBag.categorylist = categoryList;
 
             return View();
         }
@@ -100,8 +102,30 @@ namespace artgallery.Controllers
 
 
 
+        public ActionResult CheckoutAuc() //create of AucInvice
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult CheckoutAuc(AuctionInvoice invc) //create of AucInvice
+        {
+            if (ModelState.IsValid)
+            {
+                db.AuctionInvoices.Add(invc);                                             // (Modelvar).().Add(value entered in parameters)
 
+                if ((db.SaveChanges()) > 0) // 
+                {
+                    TempData["msg"] = "Invoice Updated";
+                    return RedirectToAction("CustomersIndex");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            return View();
+        }
 
 
         public string uploadimage(HttpPostedFileBase file)

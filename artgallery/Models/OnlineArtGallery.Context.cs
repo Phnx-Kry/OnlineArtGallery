@@ -13,10 +13,10 @@ namespace artgallery.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OnlineArtGalleryEntities : DbContext
+    public partial class OnlineArtGalleryEntities2 : DbContext
     {
-        public OnlineArtGalleryEntities()
-            : base("name=OnlineArtGalleryEntities")
+        public OnlineArtGalleryEntities2()
+            : base("name=OnlineArtGalleryEntities2")
         {
         }
     

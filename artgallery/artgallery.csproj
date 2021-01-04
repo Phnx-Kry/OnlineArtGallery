@@ -133,7 +133,6 @@
     <Compile Include="Controllers\AuctionGalleryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\SimpleArtGalleryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -421,6 +420,7 @@
     <Content Include="Views\AdministrativeCorner\Account.cshtml" />
     <Content Include="Views\AdministrativeCorner\AddAucCategory.cshtml" />
     <Content Include="Views\AdministrativeCorner\AdMembersEdit.cshtml" />
+    <Content Include="Views\AuctionGallery\CheckoutAuc.cshtml" />
     <None Include="Views\Home\shop.cshtml" />
     <None Include="Views\Home\contact.cshtml" />
     <None Include="Views\Home\home.cshtml" />
@@ -441,12 +441,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\SimpleArtGallery\Upload.cshtml" />
     <Content Include="Views\SimpleArtGallery\Index.cshtml" />
+    <Content Include="Views\SimpleArtGallery\CheckoutArt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AngularJS\" />
     <Folder Include="App_Data\" />
     <Folder Include="Content\Data\" />
-    <Folder Include="Views\Invoice\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

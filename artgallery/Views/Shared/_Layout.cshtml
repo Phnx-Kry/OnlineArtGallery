@@ -50,7 +50,7 @@
     <div id="header" class="header">
         <div class="container menu-container">
 
-            <h2>  @Html.ActionLink("Online Art Gallery", "index", "Home", new { @class = "logo" }) </h2>
+            <h2><b>  @Html.ActionLink("Online Art Gallery", "index", "Home", new { @class = "logo" }) </b></h2>
 
             <a href="#" class="menu-trigger">
                 <span></span>
@@ -66,45 +66,40 @@
         </div>
         <ul class="menu type1">
             <!-- Menu Starts -->
-            
+
             <li class="menu-item-simple-parent">
 
                 @Html.ActionLink("Home", "index", "Home")
                 <ul class="sub-menu">
-                    <li>@Html.ActionLink("About", "about", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Account", "Account", "Customer")</li>
-                </ul>
-                <a class="dt-menu-expand">+</a>
-            </li>
-            
-            <li class="menu-item-simple-parent">
-                @Html.ActionLink("new art", "Gallery", "Home")
-                <ul class="sub-menu">
-                    <li><a href="gallery-detail.html">Gallery detail</a></li>
-                    <li><a href="gallery-detail-with-lhs.html">Gallery-detail-left-sidebar</a></li>
-                    <li><a href="gallery-detail-with-rhs.html">Gallery-detail-right-sidebar</a></li>
                 </ul>
                 <a class="dt-menu-expand">+</a>
             </li>
             <li class="menu-item-simple-parent">
-                @Html.ActionLink("art and sale", "shop", "Home")
+                @Html.ActionLink("Contact", "Contact", "Home")
                 <ul class="sub-menu">
-                    <li><a href="shop-detail.html">Shop Detail</a></li>
-                    <li><a href="shop-cart.html">Cart Page</a></li>
-                    <li><a href="shop-checkout.html">Checkout Page</a></li>
                 </ul>
                 <a class="dt-menu-expand">+</a>
             </li>
             <li class="menu-item-simple-parent">
-                @Html.ActionLink("Admin/customer(login)", "Blog", "Home")
+                @Html.ActionLink("About", "about", "Home")
                 <ul class="sub-menu">
-                    <li><a href="blog-detail.html">Blog detail</a></li>
-                    <li><a href="blog-detail-with-lhs.html">Blog-detail-left-sidebar</a></li>
-                    <li><a href="blog-detail-with-rhs.html">Blog-detail-right-sidebar</a></li>
                 </ul>
                 <a class="dt-menu-expand">+</a>
             </li>
+            <li class="menu-item-simple-parent">
+                @Html.ActionLink("New Art", "Index", "SimpleArtGallery")
+                <ul class="sub-menu">
+                </ul>
+                <a class="dt-menu-expand">+</a>
+            </li>
+            <li class="menu-item-simple-parent">
+                @Html.ActionLink("art and sale", "Index", "AuctionGallery")
+                <ul class="sub-menu">
+                    <li></li>
+                </ul>
+                <a class="dt-menu-expand">+</a>
+            </li>
+
             <li class="menu-item-simple-parent">
 
                 @Html.ActionLink("Member Account", "Account", "Customer")
@@ -115,8 +110,14 @@
                 </ul>
                 <a class="dt-menu-expand">+</a>
             </li>
+            <li class="menu-item-simple-parent">
+                @Html.ActionLink("AdminLogin", "Account", "AdministrativeCorner")
+                <ul class="sub-menu">
+                    <li></li>
+                </ul>
+                <a class="dt-menu-expand">+</a>
+            </li>
 
-            
 
         </ul> <!-- Menu Ends -->
     </nav><!-- Main-menu Ends -->

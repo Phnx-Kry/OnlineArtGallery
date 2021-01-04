@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<artgallery.Models.ArtGallery>
+@model IEnumerable<artgallery.Models.AuctionGallery>
 
 @{
     ViewBag.Title = "AuctionGallery";
@@ -8,7 +8,7 @@
 
 
 <div id="main">
-    <div class="breadcrumb">
+    <div class="breadcrumb" style="background-color:black">
         <!-- *BreadCrumb Starts here** -->
         <div class="container">
             <h2>Gallery <span>Art</span></h2>
@@ -40,6 +40,7 @@
                 <a data-filter=".people" href="#" title="06" class="dt-sc-tooltip-top type1 dt-sc-button">People</a>
                 <a data-filter=".street" href="#" title="05" class="dt-sc-tooltip-top type1 dt-sc-button">Street</a>
                 <a data-filter=".still-life" href="#" title="08" class="dt-sc-tooltip-top type1 dt-sc-button">Still life</a>
+                <a data-filter="" href="#" title="08" class="dt-sc-tooltip-top type1 dt-sc-button"></a>
             </div>
             <div class="portfolio-fullwidth">
                 <!-- **portfolio-fullwidth Starts Here** -->
@@ -73,11 +74,29 @@
                         </div>
 
 
+                        @foreach (var item in Model)
+                        {
+                            <div class="portfolio nature still-life @item.AucCategory dt-sc-one-fourth">
+                                <figure>
+                                    <img src="@Url.Content(item.AucPic)" alt="" title="">
+                                    <figcaption>
+                                        <div class="portfolio-detail">
+                                            <div class="views">
+                                                <a class="fa fa-camera-retro" data-gal="prettyPhoto[gallery]" href="~/Content/images/portfolio-images/img-1.jpg"></a><span>@Html.DisplayFor(modelItem => item.AucId)</span>
+                                            </div>
+                                            <div class="portfolio-title">
+                                                <h5>@Html.DisplayFor(modelItem => item.AucTitle)</h5>
+                                                <p>@Html.DisplayFor(modelItem => item.AucDescription)</p>
+                                            </div>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+
+                        }
 
 
-
-
-                    </div><!-- **dt-sc-portfolio-container Ends Here** -->
+                        </div><!-- **dt-sc-portfolio-container Ends Here** -->
                 </div>
             </div><!-- **portfolio-fullwidth Ends Here** -->
             <div class="aligncenter">

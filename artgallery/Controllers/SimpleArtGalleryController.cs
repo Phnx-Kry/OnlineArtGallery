@@ -11,7 +11,7 @@ namespace artgallery.Controllers
 {
     public class SimpleArtGalleryController : Controller
     {
-        OnlineArtGalleryEntities db = new OnlineArtGalleryEntities();
+        OnlineArtGalleryEntities2 db = new OnlineArtGalleryEntities2();
         // GET: SimpleArtGallery
         public ActionResult Index()
         {
@@ -19,7 +19,7 @@ namespace artgallery.Controllers
             SelectList categoryList = new SelectList(getCategry, "cat_Id", "cat_name");
             ViewBag.categorylist = categoryList;
 
-            return View(db.ArtGalleries.ToList());
+            return View(ViewBag.categorylist);
         }
 
 
@@ -121,7 +121,30 @@ namespace artgallery.Controllers
             return RedirectToAction("Upload");
         }
 
+        public ActionResult CheckoutArt() //create of ArtInvice
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult CheckoutArt(ArtInvoice invc) //create of AucInvice
+        {
+            if (ModelState.IsValid)
+            {
+                db.ArtInvoices.Add(invc);                                             // (Modelvar).().Add(value entered in parameters)
+
+                if ((db.SaveChanges()) > 0) // 
+                {
+                    TempData["msg"] = "Invoice Updated";
+                    return RedirectToAction("CustomersIndex");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            return View();
+        }
 
 
         public string Uploadimage(HttpPostedFileBase imgfile)

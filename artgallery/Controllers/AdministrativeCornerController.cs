@@ -13,7 +13,7 @@ namespace artgallery.Controllers
     public class AdministrativeCornerController : Controller
     {
 
-        OnlineArtGalleryEntities db = new OnlineArtGalleryEntities();
+        OnlineArtGalleryEntities2 db = new OnlineArtGalleryEntities2();
         // GET: AdministrativeCorner
         public ActionResult Index()
         {

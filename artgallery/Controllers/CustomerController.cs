@@ -13,7 +13,7 @@ namespace artgallery.Controllers
     public class CustomerController : Controller
     {
 
-        OnlineArtGalleryEntities db = new OnlineArtGalleryEntities();
+        OnlineArtGalleryEntities2 db = new OnlineArtGalleryEntities2();
         // GET: Customer
         public ActionResult Index()
         {
